@@ -163,6 +163,11 @@ body {
     width: 30%;
     padding: 10px;
 }
+.profileinfo{
+    border: 2px solid black;
+    margin-left: 8%;
+    padding: 10px;
+}
 
 
 .row:after {

@@ -14,6 +14,7 @@ const register =  require('./Routes/register')
 const login = require('./Routes/login')
 const logout = require('./Routes/logout')
 const tweet = require('./Routes/tweet')
+const search = require('./Routes/search')
 
 var c;
 app.use(express.static('public'));
@@ -35,6 +36,7 @@ app.use('/registration',register)
 app.use('/login',login)
 app.use('/logout',logout)
 app.use('/tweet',tweet)
+app.use('/search',search)
 
 
 
