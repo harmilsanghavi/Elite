@@ -33,6 +33,7 @@
                         <div class="tweet_tag">
                             <a href="/tweet/tweet_add" class="tweet">Tweet</a>
                         </div>
+                        <div><h2>Welcome <%=data%></h2></div>
                         <!-- code cut h1 tag -->
                         <a href="/logout/logout">
                             <h2>Logout</h2>
@@ -148,7 +149,9 @@
                                 <i class="fa-solid fa-magnifying-glass"></i></span>
                             <input type="text" placeholder="Search" onkeyup="search(this.value)" />
                         </div>
-<div><p id="searchresult"></p></div>
+                        <div>
+                            <p id="searchresult"></p>
+                        </div>
                     </div>
             </section>
 
@@ -157,6 +160,7 @@
     </div>
 </body>
 <script>
+
     async function search(search_value) {
         var s = ""
         var search_result = await fetch(`/search/home?var=${search_value}`)
@@ -164,18 +168,40 @@
             .then((arr) => {
                 console.log(arr);
                 for (i = 0; i < arr.length; i++) {
-                    s += `<div class="profileinfo">
-                <div class="name">  
-                    
-                    <span>`+ arr[i].name+ `
+                    s += `
+                    <div class="searchprofile">
+                        <div class="profileinfo1">
+                            <img src="/files/profile-img.png" alt="">
                         </div>
-                        </div>`;
-                } 
+                        <div class="profileinfo2">
+                               <div class="name">
+                                <span>`+ arr[i].name + `</span>
+                                </div>
+                                <div class="email">
+                                <span>`+ arr[i].email + `</span>
+                                 </div>
+                        </div>
+                        <div class="profileinfo3">
+                            <div class="followbtn">
+                                <span onclick=follow(`+ arr[i].id + `) id="followbutton">Follow</span>
+                            </div>
+                          
+                        </div>
+                    </div>`;
+                }
                 document.getElementById('searchresult').innerHTML = s;
+
             })
         // console.log(search_value);
     }
+   
+    async function follow(id) {
+        var following_btn = document.getElementById('followbutton').innerText="Unfollow";
+       
+        var follower_result = await fetch(`/search/follower?follower_id=${id}`)
+       
+    }
+    
 </script>
 
 </html>
-Footer

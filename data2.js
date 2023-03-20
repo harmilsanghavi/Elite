@@ -15,6 +15,7 @@ const login = require('./Routes/login')
 const logout = require('./Routes/logout')
 const tweet = require('./Routes/tweet')
 const search = require('./Routes/search')
+const follower = require('./Routes/follower')
 
 var c;
 app.use(express.static('public'));
@@ -37,6 +38,7 @@ app.use('/login',login)
 app.use('/logout',logout)
 app.use('/tweet',tweet)
 app.use('/search',search)
+app.use('/follower',follower)
 
 
 

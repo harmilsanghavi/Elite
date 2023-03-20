@@ -55,6 +55,8 @@ const kakaLogin = asyncHandler(async (req, res) => {
                var token_id = jwt.sign(data[0].id, 'id')
                res.cookie('home', token_id)
 
+               console.log("token::::   ",token_id);
+
                var token = jwt.sign(data[0].name, 'prachi');
                console.log(token);
 

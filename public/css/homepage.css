@@ -163,12 +163,45 @@ body {
     width: 30%;
     padding: 10px;
 }
-.profileinfo{
-    border: 2px solid black;
+.searchprofile{
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 2px solid black; */
     margin-left: 8%;
-    padding: 10px;
+    
+}
+.profileinfo1
+{
+    width:25%;
 }
 
+
+.profileinfo2
+{
+    width:50%;
+    margin-top:10px; 
+
+}
+.profileinfo3
+{
+    width:25%;
+    margin-top:13px;
+        
+}
+.followbtn{
+    text-decoration: none;
+        background-color: #857DF9;
+        border-radius: 10px;
+        padding:5px; 
+        cursor: pointer;
+
+}
+.profileinfo3 span{
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+}
 
 .row:after {
     content: "";
