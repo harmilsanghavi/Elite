@@ -40,7 +40,7 @@ const kakaLogin = asyncHandler(async (req, res) => {
          res.render('login.ejs', { str, c });
       }
       else {
-         console.log("failed " + c)
+         //console.log("failed " + c)
          console.log(data);
          var hash2 = bcrypt.compareSync(req.body.password, data[0].password);
          console.log(hash2);
@@ -78,6 +78,7 @@ const kakaLogin = asyncHandler(async (req, res) => {
 const login2 = asyncHandler(async (req, res) => {
 
    var cook = req.cookies.authcookie;
+   var id=req.cookies.home
    console.log("cookie: ", cook);
    if (!cook) {
       var str = "";
@@ -85,10 +86,17 @@ const login2 = asyncHandler(async (req, res) => {
       res.render('login.ejs', { str, c });
    }
    else {
-
-      var token = jwt.verify(cook, 'prachi');
-      console.log("token verify", token);
-      res.render('home.ejs', { data: token });
+      var token_id = jwt.verify(id, 'id');
+      console.log("token verify", token_id);
+      var count=await query(`select count(*) as count from login where user_id='${token_id}'`)
+      console.log(count[0].count)
+      if(count[0].count>1){
+         var token = jwt.verify(cook, 'prachi');
+         console.log("token verify", token);
+         res.render('home.ejs', { data: token });
+      }else{
+         res.render('profile_info')
+      }
 
    }
 })
