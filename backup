@@ -1,0 +1,1457 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Twitter Clone - Final</title>
+  <link rel="stylesheet" href="/css/profile.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <input type="text" hidden name="uid" id="uid">
+  <div class="whole-web">
+    <div class="container">
+
+
+      <div class="flexdata">
+
+
+        <!-- sidebar starts -->
+        <div class="sidebar">
+          <svg class="svg-icon2"
+            style="width: 3em; height: 3em;vertical-align: middle;fill: currentColor;overflow: hidden;"
+            viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M962.267429 233.179429q-38.253714 56.027429-92.598857 95.451429 0.585143 7.972571 0.585143 23.990857 0 74.313143-21.723429 148.260571t-65.974857 141.970286-105.398857 120.32-147.456 83.456-184.539429 31.158857q-154.843429 0-283.428571-82.870857 19.968 2.267429 44.544 2.267429 128.585143 0 229.156571-78.848-59.977143-1.170286-107.446857-36.864t-65.170286-91.136q18.870857 2.852571 34.889143 2.852571 24.576 0 48.566857-6.290286-64-13.165714-105.984-63.707429t-41.984-117.394286l0-2.267429q38.838857 21.723429 83.456 23.405714-37.741714-25.161143-59.977143-65.682286t-22.308571-87.990857q0-50.322286 25.161143-93.110857 69.12 85.138286 168.301714 136.265143t212.260571 56.832q-4.534857-21.723429-4.534857-42.276571 0-76.580571 53.979429-130.56t130.56-53.979429q80.018286 0 134.875429 58.294857 62.317714-11.995429 117.174857-44.544-21.138286 65.682286-81.115429 101.741714 53.174857-5.705143 106.276571-28.598857z"
+              fill="#857df9" />
+          </svg>
+
+          <div class="sidebarOption active">
+            <span class="material-icons"> home </span>
+            <a href="/login/login">Home</a>
+          </div>
+
+
+          <div class="sidebarOption">
+            <span class="material-icons"> perm_identity </span>
+            <h2>Profile</h2>
+          </div>
+
+          <div id="manuopt" onclick="dataopt()" class="sidebarOption">
+            <span class="material-icons"> more_horiz </span>
+            <h2>More</h2>
+          </div>
+          <button class="sidebar__tweet">Tweet</button>
+        </div>
+
+        <div>
+
+        </div class="bottomdata datastick">
+         
+        <div class="profile_row">
+          <div class="profile_tab1">
+            <img src="<%=profile_data.user_image%>">
+          </div>
+          <div class="profile_tab2">
+            <p><%=profile_data.name%></p>
+            <p><%=profile_data.user_name%></p>
+          </div>
+        </div>
+      </div>
+      <!-- sidebar ends -->
+
+      <!-- feed starts -->
+      <div class="feed">
+
+
+
+        <div class="feed__header">
+          <div class="header" id="myHeader">
+
+
+
+
+
+            <div class="unameandarroo">
+
+
+              <div onclick="history.back()" class="arrowicon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                  width="32" height="32" viewBox="0 0 256 256" xml:space="preserve">
+
+                  <defs>
+                  </defs>
+                  <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+                    transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                    <polygon points="65.36,0 69.64,4.28 28.92,45 69.64,85.72 65.36,90 20.36,45 "
+                      style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                      transform="  matrix(1 0 0 1 0 0) " />
+                  </g>
+                </svg>
+              </div>
+
+              <div>
+
+                <h2> <%=profile_data.name%>  </h2>
+                <p class="lighttxt"><%=tweet_count%> Tweets</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- tweetbox starts -->
+        <div class="feed-contain">
+          <div class="mainprofile">
+
+
+            <div class="card">
+              <div class="card_background_img">
+
+              </div>
+              <div class="card_profile_img">
+              <img src="<%=profile_data.user_image%>">
+              </div>
+              <div class="user_details">
+                <div class="unameinpro">
+
+                  <h3><%=profile_data.name%> </h3>
+                  <h4><%=profile_data.user_name%> </h4>
+                </div>
+
+
+                <div class="editpro">
+                  <a class="editproa"> Edit Profile </a>
+                </div>
+              </div>
+
+              <div class="follow">
+                <div class="flexthisdata">
+                  <div class="lfmargin">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                   
+                  </div>
+                  <div class="joindate">
+               
+                    <h4> 
+                      joined March @2023</h4>
+                  </div>
+                </div>
+                <div class="flexthisdata">
+                  <div class="lfmargin">
+                    <h4> <%=count%> <a href="/list/following">Following</a>&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp </h4>
+                  </div>
+                  <div>
+                    <h4><%=f%><a href="/list/follower"> Followers</a></h4>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- tweetbox ends -->
+
+          <!-- post starts -->
+          <div class="post">
+
+
+            <div class="post-child">
+              <div class="flexdatatwit">
+
+
+                <div class="twitimg">
+
+                  <img width="32px" class="tweetimg1" src="<%=profile_data.user_image%>" alt="img">
+                </div>
+
+
+
+                <div class="nameandtime">
+
+                  <div class="flex1">
+
+                    <div class="tweetname">
+
+                      <h5 class="tweetnamed">
+                        <%=profile_data.name%>
+                      </h5>
+                    </div>
+                    <div class="tweetid">
+                      <h5 class="tweetidd">
+                        <%=profile_data.user_name%>
+                      </h5>
+                    </div>
+                    <div class="tweettime">
+                      <h5 class="tweettimed">
+                        6hr
+                      </h5>
+                    </div>
+
+
+                  </div>
+                  <div class="tweetdatamain">
+
+                    <h5 class="tweetdatatxt">
+                      <%
+                        const array_of_allowed_files = ['png', 'jpeg', 'jpg'];
+                        const array_of_allowed_videos = ['mp4','gif'];
+                    %>
+                    <% for(var i=0;i<data.length;i++) { %>
+                            <p id="count"><%=data.length%></p>
+                            <div>
+                                    <div>
+                                        <div>
+                                            <p class="skill"><%=data[i].description%></p>
+                                            <p class="skill"><%=data[i].description%></p>
+                                            <%  if(data[i].media_url==null) {   
+                                                console.log("nothing")
+                                             }else{ 
+                                            %>
+                                            <%  const file_extension = data[i].media_url.slice(((data[i].media_url.lastIndexOf('.') - 1) >>> 0) + 2);
+                                                if (array_of_allowed_files.includes(file_extension)) {
+                                            %>
+                                            <img id="tweet_img" width="50%" src="<%=data[i].media_url%>" />
+                                            <div>
+                                              <div class="insta">
+                                                  <div class="icon_row">
+                                                      <i id="heart1" class="fa fa-thumbs-up" onclick="likepost()"></i>
+                                                      <p>10</p>
+                                                    <div class="icon_row">
+                                                      <div class="icon_col">
+                                                          <a href=""><i  class="fas fa-comment"></i></a>
+                                                          <p>10</p>
+                                                      </div>
+                                                      
+                                                    <div class="icon_row">
+                                                      <div class="icon_col">
+                                                          <a href=""><i class="fa fa-retweet"></i></a>
+                                                    <p>10</p>
+                                                      </div>
+                                                     
+                                                  </div>
+                                                 
+                                               </div>
+                                          </div>
+                                            <% }else{ %>
+                                                <video width="320" height="240" controls>
+                                                    <source src="<%=data[i].media_url%>" type="video/mp4">
+                                                </video>
+                                                <div>
+                                                  <div class="insta">
+                                                      <div class="icon_row">
+                                                          <i id="heart<%=i%>" class="fa fa-thumbs-up" onclick="likepost()"></i>
+                                                          <p>10</p>
+                                                        <div class="icon_row">
+                                                          <div class="icon_col">
+                                                              <a href=""><i  class="fas fa-comment"></i></a>
+                                                              <p>10</p>
+                                                          </div>
+                                                          
+                                                        <div class="icon_row">
+                                                          <div class="icon_col">
+                                                              <a href=""><i class="fa fa-retweet"></i></a>
+                                                        <p>10</p>
+                                                          </div>
+                                                         
+                                                      </div>
+                                                     
+                                                   </div>
+                                              </div>
+                                            <% }}%>
+                                            
+                                        </div>
+                                    </div>
+                      
+                            </div>
+                        </div>
+                        </div>
+                        
+                   <% } %>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+      <!-- feed ends -->
+
+      <!-- widgets starts -->
+      <div class="widgets">
+       
+      </div>
+    </div>
+  </div>
+  <!-- widgets ends -->
+  </div>
+  <dialog id="moreoption">
+    <div class="manubar">
+      <a class="achange" href="http://localhost:8000/changepassword"> Change Password</a>
+      <a class="achange" id="deleteac" onclick="deleteac()">Delete Account</a>
+      <a class="achange" id="logoutac" onclick="logoutac()">Logout</a>
+
+      <p class="cancel" onclick="dataout()">cancle</p>
+    </div>
+  </dialog>
+  <script>
+
+    function dataopt() {
+
+      var data1 = document.getElementById('moreoption')
+      data1.showModal()
+    }
+    function dataout() {
+      var data1 = document.getElementById('moreoption')
+      data1.close()
+    }
+
+
+
+
+
+
+
+
+    window.onscroll = function () { myFunction() };
+
+    var header = document.getElementById("myHeader");
+
+
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+
+
+    function logoutac() {
+
+
+      if (confirm("are your sure to logout") == true) {
+            fetch(`/logout/logout`)
+            location.assign(`/login/login/index5`)
+            console.log("delete")
+      } else {
+            alert("you cancel the delete");
+      }
+
+    }
+
+
+   async function deleteac() {
+
+      if (confirm("are your sure to Delete Account") == true) {
+       const data=   await  fetch(`/deleteAccount/delete`);
+       const data2 = await data.json();
+       console.log(data2);
+            window.location.href="/login/login/index5"
+            console.log(data2);
+      } else {
+            alert("you cancel the delete");
+      }
+
+    }
+
+
+    // var likeobj = 0;
+    var count=0
+    var flag=true
+    function likepost() {
+      var count2=document.getElementById("count").innerHTML
+      console.log(count2)
+        var z=document.getElementById('heart1')
+        count=1
+        
+        if(flag==true){
+            z.style.color='red'
+          flag=false;
+        }else{
+          z.style.color='#e0e2e4'
+          flag=true;
+        }
+    }
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+HOMECSS
+
+
+
+/* body {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* .container_inside{
+    text-align: center;
+} */
+/* 
+.container{
+    display: flex;
+    justify-content: center;
+} */
+
+
+/* h1 {
+    color: skyblue;
+}
+
+input {
+    padding: 10px 30px;
+    margin: 10px;
+}
+
+.title {
+    text-align: center;
+} */
+
+
+
+/* ------------------------------------------ */
+/* .body-login{
+    text-transform: capitalize;
+    font-family: Arial;
+    background-color: rgba(0,0,0,0.2);
+    color: black;
+    }
+    .form1{
+    position: absolute;
+    top: 150px;
+    left: 450px;
+    text-align: center;
+    
+    }
+    .signpage{
+    
+    background-color: #FFFFFF;
+    color:black;
+    border:1px solid white ;
+    border-radius: 10px;
+    width: 500px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+
+    }
+
+
+
+    .textdata{
+    text-align: center;
+    padding: 0 100px;
+    line-height: 3;
+    
+    }
+    .squre{
+    height: 35px;
+    width: 250px;
+    border: 1px solid rgb(139, 137, 137);
+    border-radius: 3px;
+    margin: 10px 0px 0px 10px;
+    }
+    
+    
+    .twi{
+    margin: 20px;
+    text-align: center;
+    }
+
+
+    .submit-login{
+    background-color: black;
+    color:#ffffff;
+    padding: 8px 20px;
+    text-align: center;
+    height: 40px;
+    width: 250px;
+    border: 1px solid rgb(139, 137, 137);
+    border-radius: 23px;
+    margin: 20px;
+    }
+    .aforlink{
+    text-decoration: none;
+    color: #857DF9;
+    }
+    
+    .login-forgot{
+    border: 1px solid rgb(139, 137, 137);
+    border-radius: 23px;
+    padding: 8px 65px;
+    
+    }
+    .h1tag{
+    margin: -16 0px;
+    }
+    .textdata{
+    width: fit-content;
+    block-size: fit-content;
+    }
+    .login-forgot:hover {
+    background-color: rgba(0, 0, 0, 0.062);} */
+
+
+
+
+
+/* --------------------------------------HOME------PAGE-------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+}
+
+.container {
+    max-width: 84%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* .column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px;
+    Should be removed. Only for demonstration
+} */
+
+.col_nav {
+    float: left;
+    width: 22%;
+    padding: 10px;
+    margin-top: 20px;
+    /* position: relative;
+    position: sticky; */
+}
+
+.col_tweet {
+    float: left;
+    width: 48%;
+    padding: 10px;
+    border-left: 1px solid rgba(0, 0, 0, 0.192);
+    border-right: 1px solid rgba(0, 0, 0, 0.192);
+}
+
+.col_search {
+   
+    float: left;
+    width: 30%;
+    padding: 10px;
+}
+.searchprofile{
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 2px solid black; */
+    margin-left: 8%;
+    
+}
+.profileinfo1
+{
+    width:25%;
+}
+
+
+.profileinfo2
+{
+    width:50%;
+    margin-top:10px; 
+
+}
+.profileinfo3
+{
+    width:25%;
+    margin-top:13px;
+        
+}
+.followbtn{
+    text-decoration: none;
+        background-color: #857DF9;
+        border-radius: 10px;
+        padding:5px; 
+        cursor: pointer;
+
+}
+.profileinfo3 span{
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* .feed {
+    overflow-y: scroll;
+  }
+  
+  .feed__header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--twitter-background);
+    padding: 15px 20px;
+  }
+  
+  .feed__header h2 {
+    font-size: 20px;
+    font-weight: 800;
+  }
+  
+  .feed::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .feed {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+   */
+
+/* .row{
+    position: fixed; 
+} */
+
+.fa-twitter {
+    color: #857DF9;
+    margin-bottom: 7%;
+    border: 1px solid grey;
+    padding: 5%;
+    border-radius: 50%;
+    box-shadow: 4px 2px 5px rgb(197, 218, 224);
+}
+
+.fa-twitter:hover {
+    box-shadow: 4px 2px 5px rgb(154, 168, 172);
+}
+
+
+.sidebarOption {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 5%;
+}
+
+.nav-icons {
+    font-size: 23px;
+    margin-right: 7%;
+}
+
+.tweet {
+    text-decoration: none;
+    margin-top: 20px;
+    border-radius: 30px;
+    background-color: #857DF9;
+    padding: 4% 25%;
+}
+
+.tweet_tag a {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.tweet_tag {
+    margin-top: 30px;
+}
+
+.sidebarOption h2 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+/* .navi{
+    
+    position: sticky;
+} */
+
+
+
+/* .sidebarOption:hover {
+    background-color: beige;
+    border-radius: 30px;
+    transition: color 20ms ease-out;
+    width: 70%;
+} */
+
+
+.widgets {
+    flex: 0.3;
+}
+
+.widgets__input {
+    display: flex;
+    align-items: center;
+    /* background-color:#857df965; */
+    padding: 10px;
+    border: 1px solid #857df965;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.widgets__input input {
+    border:none;
+    /* background-color: grey; */
+    font-size: 1rem;
+    margin-left: 10px;
+    outline: none;
+    /* text-decoration: ; */
+
+}
+
+.widgets__searchIcon {
+    color: rgb(24, 7, 7);
+}
+
+
+/* .container {
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+} */
+
+/* .container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+
+.navigation_section {
+    border: 1px solid red;
+}
+
+.tweet_section {
+    border: 1px solid green;
+}
+
+.search_section {
+    border: 1px solid blue;
+}
+
+.na_raw{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px -16px;
+}
+
+.na_col{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PROFILECSS
+/* #857df9 */
+.body-login{
+    text-transform: capitalize;
+   font-family: Arial;
+   background-color: rgba(0,0,0,0.1);
+    color: black;
+}
+.body-changepwd{
+  text-transform: capitalize;
+  font-family: Arial;
+  background-color: rgba(0,0,0,0.1);
+   color: black;
+text-align: center;
+}
+.form1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+    
+
+}
+.h2data{
+  margin-right: 54px;
+}
+.signpage{
+   
+    background-color: #ffffff;
+    color:black;
+    border:1px solid white ;
+    border-radius: 10px;
+ 
+ width: 500px;
+padding-bottom: 20px;
+}
+.changepage{
+    
+  background-color: #ffffff;
+  color:black;
+  border:1px solid white ;
+  border-radius: 10px;
+
+width: 500px;
+padding-bottom: 20px;
+}
+.textdata{
+text-align: right;
+    padding: 0 100px;
+    line-height: 3;
+
+}
+.squre{
+    height: 35px;
+    width: 250px;
+    border: 1px solid rgb(139, 137, 137);
+    border-radius: 3px;
+    margin: 10px 0px 0px 10px;
+}
+
+
+.twi{
+    margin: 20px;
+text-align: center;
+}
+.submit-login{
+    background-color: black;
+    color:#ffffff;
+
+
+    height: 40px;
+    width: 250px;
+    border: 1px solid rgb(139, 137, 137);
+    border-radius: 23px;
+    margin: 20px;
+}
+.aforlink{
+    text-decoration: none;
+    color: #857df9;
+}
+
+.login-forgot{
+  
+  font-size: 0.8rem;
+    border: 1px solid rgb(139, 137, 137);
+    border-radius: 23px;
+    padding: 8px 75px;
+  
+}
+.h1tag{
+    margin: -16 0px;
+}
+.textdata{
+    width: fit-content;
+block-size: fit-content;
+}
+.login-forgot:hover {
+    background-color: rgba(0, 0, 0, 0.062);
+}
+
+
+/* 1111111111111profilepage1111111111111111111111111111111 */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.whole-web{
+  width: 100%;
+  --twitter-color: #857df9;
+  --twitter-background: #e6ecf0;
+}
+.sidebar{
+  position: sticky;
+  top: 0;
+}
+.sidebarOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebarOption .material-icons,
+.fa-twitter {
+  padding: 20px;
+}
+
+.sidebarOption h2 {
+  font-weight: 800;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.sidebarOption:hover {
+  background-color: var(--twitter-background);
+  border-radius: 30px;
+  color: var(--twitter-color);
+  transition: color 100ms ease-out;
+}
+
+.sidebarOption.active {
+  color: var(--twitter-color);
+}
+
+.sidebar__tweet {
+  width: 100%;
+  background-color: var(--twitter-color);
+  border: none;
+  color: white;
+  font-weight: 900;
+  border-radius: 30px;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.container {
+  display: flex;
+ width:1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+.sidebar {
+  border-right: 1px solid var(--twitter-background);
+  flex: 0.2;
+
+  min-width: 250px;
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.fa-twitter {
+  color: var(--twitter-color);
+  font-size: 30px;
+}
+
+/* feed */
+.feed {
+ width: 50%;
+  padding: 10px;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: auto;
+ 
+}
+
+
+
+
+
+
+.fa{
+  color: #cfc3c3;
+}
+
+
+.header{
+  background-color: #f3eded;
+ 
+  padding: 10px 10px 0px 0px;
+
+}
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+ 
+}
+
+.sticky1 {
+  position: fixed;
+  top: 0;
+ 
+}
+.header1{
+  position: fixed;
+  top: 0;
+}
+
+
+.cancel{
+  margin: 20px 40px 10px 20px ;
+}
+
+
+.user_details{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.feed__header h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.feed::-webkit-scrollbar {
+  display: none;
+}
+
+.feed {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* tweet box */
+
+
+ 
+
+.tweetBox__tweetButton {
+  background-color: var(--twitter-color);
+  border: none;
+  color: white;
+  font-weight: 900;
+
+  border-radius: 30px;
+  width: 80px;
+  height: 40px;
+  margin-top: 20px;
+  margin-left: auto;
+}
+.post{
+ margin:16 0px;
+  border:1px solid #dfe2e7 ;
+}
+.feed-contain{
+  width: 100%;
+  padding: 10px;
+}
+/* widgets */
+.widgets {
+  position: sticky;
+  top: 0;
+
+  width:25%;
+
+}
+.searchtext{
+  width: 150px;
+}
+.input1 {
+  display: flex;
+  align-items: center;
+  background-color: var(--twitter-background);
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.widgets__input input {
+  border: none;
+  background-color: var(--twitter-background);
+}
+
+.widgets__searchIcon {
+  color: gray;
+}
+
+.widgets__widgetContainer {
+  margin-top: 15px;
+  margin-left: 20px;
+  padding: 20px;
+  background-color: #f5f8fa;
+  border-radius: 20px;
+}
+
+.widgets__widgetContainer h2 {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.bottom-stickchild{
+  display: flex;
+  flex-wrap: wrap;
+}
+.notdes{
+  text-decoration: none;
+  color:black;
+}
+.imgpro{
+  border-radius: 50px;
+}
+
+.backimgdiv{
+  height: 200px;
+  width: 550px;
+  background-color: rgb(136, 29, 29);
+}
+.flexdata{
+ 
+  width:25%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.unameandarroo{
+  width: 551px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.l2prif{
+  display: flex;
+  flex-wrap: wrap;
+ 
+ justify-content: space-between;
+}
+
+.nameandtime{
+  width: 350px;
+}
+
+
+.profilepicture{
+  border-radius: 50%;
+}
+.editpro{
+  margin-top: -10px;
+  margin-right: 10px;
+}
+.editproa{
+  border:1px solid #616466 ;
+  border-radius: 23px;
+
+ padding:10px 20px 10px 20px;
+}
+.proname{
+  padding: 10px;
+  text-align: center;
+}
+.lighttxt{
+  color: #616466;
+}
+
+.tweetbox__input{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border:2px solid #02070a ;
+width: 554px;
+}
+.flexthisdata{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+   
+
+}
+.lfmargin{
+  margin-left: 20px;
+  padding-right:10px;
+  padding-bottom:10px;
+}
+.unameinpro{
+  margin: 10px 0px 10px 20px;
+}
+
+
+.tweetBox{
+  background-color: #4d9cd1;
+}
+.profda6ta{
+  border:2px solid #02070a ; 
+  background-color: #857df9;
+}
+.parent{
+  width:200px;
+  height:200px;
+  position:absolute;
+  z-index:0;
+}
+
+.inner{
+  position:absolute;
+  z-index:1;
+  bottom:0;
+  right:0;
+}
+
+h4{
+  color:#616466;
+  font-weight: 200;
+}
+
+
+.card {
+  width: 100%;
+ 
+  background-color: #ffffff;
+  margin: 0 auto;
+  margin-top: 80px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card_profile_img {
+  width: 120px;
+  height: 120px;
+  
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+  border-radius: 120px;
+  margin: 0 auto;
+  margin-top: -50px;
+margin-left: 20px;
+
+}
+.changechild{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+justify-content: space-between;
+}
+.submit-change{
+  height: 35px;
+    width: 250px;
+    margin: 10px 0px 0px 10px;
+  
+}
+.card_background_img {
+  width: 100%;
+  height: 180px;
+  background-image: linear-gradient(to right,#9694bd,#f4e561);
+  background-repeat: no-repeat;
+  background-size: cover; 
+   background-position: center;
+   border:1px solid;
+
+}
+.mainprofile{
+  margin-top: -50px;
+  width: 100%;
+ 
+}
+
+
+.flex1{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.flex1{
+  width: 550px;
+}
+.flexdatatwit{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.flexdatatwit{
+  width:700px;
+}
+.tweetname{
+  
+margin:5px;
+}
+.twitimg{
+  margin-top: 5px;
+
+}
+.tweetimg1{
+  border-radius: 50%;
+}
+.tweetid {
+  margin:5px;
+}
+.tweetdata{
+  margin:10px 10px 5px 5px;
+  width: 100%;
+  text-align: center;
+}
+.tweetdatamain{
+  margin:0px 10px 5px 5px;
+}
+.tweettime{
+  margin:5px;
+}
+.containicon{
+  margin-left: auto;
+  margin-right: -100px
+}
+h5{
+  font-size: 0.9rem;
+  font-weight: 100;
+}
+.tweetnamed{
+  font-weight: 900;
+}
+
+.containiconchild{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  
+}
+.icons{
+  width:33.33%;
+}
+.containicon{
+
+}
+
+
+#moreoption{
+ 
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) ;
+  width: 300px;
+border-radius: 10px;
+border:1px solid #616466;
+}
+.manubar{
+  margin: 20px;
+text-align: center;
+}
+.achange{
+  border-radius: 10px;
+text-decoration: none;
+font-size: 2rem;
+border:2px solid #02070a;
+}
+.cancle{
+  text-align: left;
+  font-size: 1.5rem;
+}
+.datastick{
+  position: sticky;
+  bottom: 0;
+}
+
+.signpagebox{
+padding:50px;
+}
+.icon_row{
+  display: flex;
+  padding-left: 2rem;
+}
+.icon_col{
+  display: flex;
+}
+
+
+/* profile_bottom start */
+.profile_row
+{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left:20px;
+ 
+}
+
+.profile_tab1 img
+{
+   width:95%;
+   height:90%;
+
+}
+.profile_tab2
+{
+  padding-top:20px;
+}
+.profile_tab2 p:nth-child(2)
+{
+  color:#616466;
+}
+
+/* profile_bottom end */
+
+
+PROFCONTROLLER
+var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
+const date = require('date-and-time')
+var util = require('util')
+const conn=require('../connection/connection')
+const asyncHandler = require("express-async-handler");
+
+
+const query = util.promisify(conn.query).bind(conn)
+
+const prof_new = asyncHandler( async(req, res) => {
+    var id = req.cookies.home;
+    var token = jwt.verify(id, 'id');
+    var sql=await query(`select id,media_url from user_tweets where u_id='${token}'`)
+    var like=await query(`select twet_id from tweet_like where use_id='${token}'`)
+    var count = await query(`select count(*) as count from 2023_Elite.user_following where user_i='${token}'`);
+    var follower = await query(`select count(*) as c from 2023_Elite.user_follower where user_id_id='${token}'`);
+
+    var profile_info = await query(`select *  from Elite_User where id=${token}`);
+    var tweetcount = await query(`select count(*) as t from user_tweets where u_id=${token}`);
+    console.log("count::::::::: ",tweetcount);
+    res.render('prof',{data:sql,likeid:like,count:count[0].count,f:follower[0].c,profile_data:profile_info[0],tweet_count:tweetcount[0].t});
+})
+
+module.exports = { prof_new }
