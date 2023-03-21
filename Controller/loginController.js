@@ -24,9 +24,21 @@ const login = asyncHandler(async (req, res) => {
       var token_id = jwt.verify(id, 'id');
       console.log(token)
       //var image = `select heading,description,media_url from user_tweets where u_id='${token}'`;
-      var sql=await query(`select heading,description,media_url from user_tweets where u_id='${token_id}'`)
+      var sql=await query(`select id,heading,description,media_url from user_tweets where u_id='${token_id}'`)
+      var like=await query(`SELECT twet_id FROM tweet_like where use_id=${token_id};`)
+      //console.log(";::::::::::::::::",like)
+      var arr=[],count,arr2=[]
+      for(var z=0;z<like.length;z++){
+         arr.push(like[z].twet_id)
+         count=await query(`select count(*) as count from tweet_like where twet_id='${like[z].twet_id}'`)
+         arr2.push(count[0].count)
+      }
+      
+      console.log("::::::::::::::::",arr)
+      console.log("::::::::::::::::",arr2)
+      console.log(like[0].count)
       if(sql){
-         res.render('home.ejs', { data:sql,data2:token });
+         res.render('home.ejs', { data:sql,data2:token ,tweetid:arr,likecount:arr2});
       }else{
          res.render('home.ejs', { data2: token });
       }
@@ -103,12 +115,23 @@ const login2 = asyncHandler(async (req, res) => {
       var id = req.cookies.home;
       var token_id = jwt.verify(id, 'id');
       console.log(token)
+      var like=await query(`SELECT twet_id FROM tweet_like where use_id=${token_id} order by twet_id asc`)
+  
+      var arr=[],count,arr2=[]
+      for(var z=0;z<like.length;z++){
+         arr.push(like[z].twet_id)
+         count=await query(`select count(*) as count from tweet_like where twet_id='${like[z].twet_id}'`)
+         arr2.push(count[0].count)
+      }
+      
+      console.log("::::::::::post ids::::::",arr)
+      console.log(":::::::::number of like:::::::",arr2)
       var sql2=await query(`select * from Elite_User where is_active=1 and is_delete=0`)
       if(sql2){
       //var image = `select heading,description,media_url from user_tweets where u_id='${token}'`;
-      var sql=await query(`select heading,description,media_url from user_tweets where u_id='${token_id}'`)
+      var sql=await query(`select id,heading,description,media_url from user_tweets where u_id='${token_id}'`)
       if(sql){
-         res.render('home.ejs', { data:sql,data2:token });
+         res.render('home.ejs', { data:sql,data2:token ,tweetid:arr,likecount:arr2});
       }else{
          console.log("else")
          res.render('home.ejs', { data2: token });
